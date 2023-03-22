@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <Title>Captcha</Title>
+    <style>
+  *
+  {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  
+  }
+  body
+  {
+    background-color: red;
+  }
+.captcha{
+  width: 100%;
+  color: black;
+  font-size: 25px;
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  padding-left: 15%;
+  transform: translate(-32%, -130%);
+  font-style: italic;
+  opacity: 0.5;
+}
+
+ input
+ {
+  width: 50%;
+  outline: none;
+  padding-left: 22px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 3px solid black;
+}
+.form
+{
+  margin-left: 30%;
+  margin-top: 8%;
+  border: 3px solid black;
+  margin-right: 30%;
+  padding-left: 13%;
+  padding-bottom: 4%;
+  padding-top: 4%;
+}
+.check-btn
+{
+  padding: 1%;
+  margin-left: 15%;
+}
+img
+{
+  border: 3px solid black;
+}
+</style>
+</head>
+<body>
+    <form action="#">
+        <div class="form">
+          <h1>
+            Hello User!
+        </h1>
+        <label for="username">Username</label><br>
+        <input type="text" id="username" placeholder="Username"><br><br>
+        <label for="password">Password</label><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <label>Captcha</label><br>
+        <div class="image">
+        <img src="a.png" height="40" width="175">
+        </div>
+        <div class="captcha">
+        <span></span>
+      </div>
+            <input type="text" placeholder="Enter captcha" maxlength="6" spellcheck="false" required class="input"><br><br>
+            <button class="check-btn">Check</button>
+        </div>
+    </form>
+  <script>
+    const captcha = document.querySelector(".captcha"),
+inputField = document.querySelector(".input"),
+checkBtn = document.querySelector(".check-btn");
+
+let allCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
+                     'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd',
+                     'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+                     't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,'!','@','#','$','%','&','?'];
+function getCaptcha(){
+  for (let i = 0; i < 6; i++) 
+  {
+    let randomCharacter = allCharacters[Math.floor(Math.random() * allCharacters.length)];
+    captcha.innerText += randomCharacter; 
+  }
+}
+getCaptcha();
+
+checkBtn.addEventListener("click", e =>{
+
+  let inputVal = inputField.value;
+  if(inputVal == captcha.innerText)
+  { 
+    alert("Succesfully Logged in")
+
+  }else
+  {
+    alert("Wrong Captcha")
+
+  }
+});
+  </script>
+  </script>
+</body>
+</html>
